@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Laravel\Passport\Passport;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
             'App\Repositories\Interfaces\CharacterRepositoryInterface',
             'App\Repositories\CharacterRepository'
         );
+        Passport::ignoreMigrations();
     }
 
     /**

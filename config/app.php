@@ -165,7 +165,10 @@ return [
         /*
          * Package Service Providers...
          */
-
+        DesignMyNight\Mongodb\MongodbPassportServiceProvider::class,
+        Jenssegers\Mongodb\MongodbServiceProvider::class,
+        Jenssegers\Mongodb\Auth\PasswordResetServiceProvider::class,
+        Jenssegers\Mongodb\MongodbQueueServiceProvider::class,
         /*
          * Application Service Providers...
          */

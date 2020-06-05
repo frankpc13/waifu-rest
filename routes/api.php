@@ -16,8 +16,13 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::group(['prefix'=>'v1'], function() {
+    Route::get('/characters', 'CharacterController@index');
+    Route::post('/characters', 'CharacterController@create')->middleware('auth:api');
+    Route::put('/characters/{id}', 'CharacterController@update');
+    Route::delete('/characters/{id}', 'CharacterController@delete');
 
-Route::get('/characters', 'CharacterController@index');
-Route::post('/characters', 'CharacterController@create');
-Route::put('/characters/{id}', 'CharacterController@update');
-Route::delete('/characters/{id}', 'CharacterController@delete');
+    Route::post('/login','UserController@login');
+    Route::post('/register','UserController@register');
+    Route::get('/logout', 'UserController@logout')->middleware('auth:api');
+});
