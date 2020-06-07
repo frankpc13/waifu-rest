@@ -22,7 +22,7 @@ Route::group(['prefix'=>'v1'], function() {
     Route::put('/characters/{id}', 'CharacterController@update');
     Route::delete('/characters/{id}', 'CharacterController@delete');
 
-    Route::post('/login','UserController@login');
-    Route::post('/register','UserController@register');
-    Route::get('/logout', 'UserController@logout')->middleware('auth:api');
+    Route::post('/login','UserController@login')->name('login');
+    Route::post('/register','UserController@register')->name('register');
+    Route::get('/logout', 'UserController@logout')->name('logout')->middleware('auth:api');
 });
